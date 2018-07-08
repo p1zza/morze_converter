@@ -1,26 +1,29 @@
 #include "stdafx.h"
 #include <iostream>
+#include <string.h>
+#define MAX 256
 using namespace std;
 
-int main()
+class morze
 {
-	int k = 0; 
-	cout << ("Enter the amount of symbols") << endl;
-	cin >> k;
-	char mass[100];
-	
-
-	for (int i = 0; i < k; i++)
+public:
+	void code()
 	{
-		cout << ("Enter the symbol") << endl;
-		cin >> mass[i];
-	}
+		char letter;
+		char *phraze;
+		phraze = new char[MAX];
+		cout << "Enter the phraze with lowercase letters" << endl;
+		cin.getline(phraze, MAX);
 
-	
-	for (int i = 0; i < k; i++)
-	{
-			switch (mass[i])
+
+		for (size_t i = 0; phraze[i]!='\0' ; i++)
+		{
+			letter = tolower(phraze[i]);
+			phraze[i] = letter;
+
+			switch (phraze[i])
 			{
+			case ' ': cout << "  "; break;
 			case 'a': cout << "*-"; break;
 			case 'b': cout << "-***"; break;
 			case 'c': cout << "-*-*"; break;
@@ -57,8 +60,14 @@ int main()
 			case '9': cout << "----*"; break;
 			case '0': cout << "-----"; break;
 			}
-			
+		}
 	}
+};
+
+void main()
+{
+	morze object;
+	object.code();
+	cout << endl;
 	system("pause");
 }
-
